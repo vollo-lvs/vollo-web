@@ -9,3 +9,5 @@ export class FoutAction implements Action {
   readonly type = CommonActionTypes.FOUT;
   constructor(public melding: Melding) {}
 }
+
+export type CommonActions = FoutAction

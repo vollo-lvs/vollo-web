@@ -1,8 +1,8 @@
 import { Actions, ActionTypes } from './actions';
 import { initialState, State } from './state';
-import { CommonActionTypes } from '../../common/fout-action.model';
+import { CommonActionTypes, CommonActions } from '../../common/fout-action.model';
 
-export function mijnGroepenReducer(state = initialState, action: Actions): State {
+export function mijnGroepenReducer(state = initialState, action: Actions | CommonActions): State {
   switch (action.type) {
     case ActionTypes.OPHALEN:
       return state;

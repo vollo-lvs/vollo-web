@@ -1,8 +1,8 @@
 import { Actions, ActionTypes } from './actions';
 import { initialState, State } from './state';
-import { CommonActionTypes } from '../../common/fout-action.model';
+import { CommonActionTypes, CommonActions } from '../../common/fout-action.model';
 
-export function uiReducer(state = initialState, action: Actions): State {
+export function uiReducer(state = initialState, action: Actions | CommonActions): State {
   switch (action.type) {
     case ActionTypes.TOON_PAGINA:
       return { ...state, paginatitel: action.paginatitel };
