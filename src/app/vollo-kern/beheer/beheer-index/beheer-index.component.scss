@@ -1,0 +1,22 @@
+@import 'vollo-kleuren';
+
+.mat-fab {
+  margin: 10px;
+  width: 112px;
+  height: 112px;
+
+  .mat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 2.6rem;
+  }
+
+  .titel {
+    display: block;
+    position: absolute;
+    color: $vollo-primary-color;
+    left: 0;
+    top: 105%;
+    width: 100%;
+  }
+}

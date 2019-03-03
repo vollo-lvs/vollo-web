@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UiStoreService } from '../vollo-kern-store';
+import { UiStoreService } from '../../vollo-kern-store';
 
 @Component({
   selector: 'vollo-pagina-titel',

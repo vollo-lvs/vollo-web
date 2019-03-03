@@ -8,7 +8,6 @@ import { VolloMaterialModule } from '../vollo-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
-import { PaginaTitelComponent } from './pagina-titel/pagina-titel.component';
 import { GroepComponent } from './groep/groep.component';
 import { KruimelService } from './kruimel/kruimel.service';
 import { KruimelpadComponent } from './kruimel/kruimelpad.component';
@@ -29,6 +28,8 @@ import { ContactModule } from './contact/contact.module';
 import { GroepScoresComponent } from './score/groep-scores/groep-scores.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapViewComponent } from './map/map-view/map-view.component';
+import { VolloBeheerModule } from './beheer/vollo-beheer.module';
+import { VolloCommonModule } from './common/vollo-common.module';
 
 @NgModule({
   imports: [
@@ -44,12 +45,13 @@ import { MapViewComponent } from './map/map-view/map-view.component';
     PlotlyModule,
     MarkdownModule.forRoot(),
     ContactModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    VolloBeheerModule,
+    VolloCommonModule
   ],
   declarations: [
     MijnGroepenComponent,
     InloggenComponent,
-    PaginaTitelComponent,
     GroepComponent,
     KruimelpadComponent,
     LeerlingComponent,
@@ -68,7 +70,6 @@ import { MapViewComponent } from './map/map-view/map-view.component';
   exports: [
     MijnGroepenComponent,
     InloggenComponent,
-    PaginaTitelComponent,
     GroepComponent,
     KruimelpadComponent,
     LeerlingContainerComponent,

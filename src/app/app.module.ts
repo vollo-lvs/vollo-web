@@ -47,10 +47,6 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    ),
     MatIconModule,
     FlexLayoutModule,
     AgGridModule.withComponents([]),
@@ -58,7 +54,11 @@ const appRoutes: Routes = [
     VolloKernModule,
     StoreModule.forRoot({}),
     VolloKernStoreModule,
-    PlotlyModule
+    PlotlyModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: false } // <-- debugging purposes only
+    )
   ],
   providers: [MatIconRegistry, httpInterceptorProviders],
   bootstrap: [AppComponent]
