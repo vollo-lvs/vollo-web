@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
-import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
+import { ColDef, GridOptions, RowClickedEvent } from 'ag-grid';
 import { Router } from '@angular/router';
 import { MijnGroepenStoreService } from '../vollo-kern-store';
 
@@ -10,7 +10,8 @@ import { MijnGroepenStoreService } from '../vollo-kern-store';
   styleUrls: ['./mijn-groepen.component.scss']
 })
 export class MijnGroepenComponent implements OnInit {
-  @ViewChild('agGrid') agGrid: AgGridNg2;
+  @ViewChild('agGrid', { static: false })
+  agGrid: AgGridNg2;
 
   gridOptions = <GridOptions>{
     enableColResize: true,
