@@ -45,9 +45,9 @@ import { VolloCommonModule } from './common/vollo-common.module';
     PlotlyModule,
     MarkdownModule.forRoot(),
     ContactModule,
-    LeafletModule.forRoot(),
+    LeafletModule,
     VolloBeheerModule,
-    VolloCommonModule
+    VolloCommonModule,
   ],
   declarations: [
     MijnGroepenComponent,
@@ -65,7 +65,7 @@ import { VolloCommonModule } from './common/vollo-common.module';
     LeerlingHistorieComponent,
     LeerlingOudersComponent,
     GroepScoresComponent,
-    MapViewComponent
+    MapViewComponent,
   ],
   exports: [
     MijnGroepenComponent,
@@ -73,8 +73,8 @@ import { VolloCommonModule } from './common/vollo-common.module';
     GroepComponent,
     KruimelpadComponent,
     LeerlingContainerComponent,
-    GroepScoresComponent
+    GroepScoresComponent,
   ],
-  providers: [KruimelService]
+  providers: [KruimelService],
 })
 export class VolloKernModule {}

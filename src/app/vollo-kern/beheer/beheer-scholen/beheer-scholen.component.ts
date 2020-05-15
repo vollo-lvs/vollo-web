@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
+import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid-community';
 import { BeheerScholenStoreService } from '../../vollo-kern-store/beheer-scholen-store';
 
 @Component({
   selector: 'vollo-beheer-scholen',
   templateUrl: './beheer-scholen.component.html',
-  styleUrls: ['./beheer-scholen.component.scss']
+  styleUrls: ['./beheer-scholen.component.scss'],
 })
 export class BeheerScholenComponent implements OnInit {
   gridOptions = <GridOptions>{
     enableColResize: true,
     enableSorting: true,
-    enableFilter: true
+    enableFilter: true,
   };
   columnDefs = <ColDef[]>[
     { headerName: 'ID', field: 'id', hide: true },
-    { headerName: 'Naam', field: 'naam', width: 300 }
+    { headerName: 'Naam', field: 'naam', width: 300 },
   ];
   rowData: any;
 

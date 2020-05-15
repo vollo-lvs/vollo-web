@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Score } from '../../common/model/score.model';
-import { ColDef, GridOptions } from 'ag-grid';
+import { ColDef, GridOptions } from 'ag-grid-community';
 
 @Component({
   selector: 'vollo-score-tabel',
   templateUrl: './score-tabel.component.html',
-  styleUrls: ['./score-tabel.component.scss']
+  styleUrls: ['./score-tabel.component.scss'],
 })
 export class ScoreTabelComponent {
   _scores: Score[];
@@ -21,12 +21,12 @@ export class ScoreTabelComponent {
   gridOptions = <GridOptions>{
     enableColResize: true,
     enableSorting: true,
-    enableFilter: true
+    enableFilter: true,
   };
   columnDefs = <ColDef[]>[
     { headerName: 'Toets', field: 'toetsafname.toets.omschrijving', width: 170 },
     { headerName: 'Datum', field: 'toetsafname.datum', width: 130, sort: 'desc' },
-    { headerName: 'Score', field: 'cijferScore', width: 100, cellStyle: { textAlign: 'right' } }
+    { headerName: 'Score', field: 'cijferScore', width: 100, cellStyle: { textAlign: 'right' } },
   ];
   rowData: any;
 

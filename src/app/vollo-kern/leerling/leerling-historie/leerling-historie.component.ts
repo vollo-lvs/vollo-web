@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Leerling } from '../../groep/leerling.model';
 import { LeerlingStoreService } from '../../vollo-kern-store/leerling-store';
-import { GridOptions, ColDef } from 'ag-grid';
+import { GridOptions, ColDef } from 'ag-grid-community';
 
 @Component({
   selector: 'vollo-leerling-historie',
   templateUrl: './leerling-historie.component.html',
-  styleUrls: ['./leerling-historie.component.scss']
+  styleUrls: ['./leerling-historie.component.scss'],
 })
 export class LeerlingHistorieComponent {
   historie$ = this.leerlingStoreService.historie$;
@@ -22,12 +22,12 @@ export class LeerlingHistorieComponent {
   gridOptions = <GridOptions>{
     enableColResize: true,
     enableSorting: true,
-    enableFilter: true
+    enableFilter: true,
   };
   columnDefs = <ColDef[]>[
     { headerName: 'Tijdslijn', field: 'omschrijving', width: 150 },
     { headerName: 'Begin', field: 'datumBegin', width: 130, sort: 'desc' },
-    { headerName: 'Einde', field: 'datumEinde', width: 130 }
+    { headerName: 'Einde', field: 'datumEinde', width: 130 },
   ];
 
   constructor(private leerlingStoreService: LeerlingStoreService) {}

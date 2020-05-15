@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AgGridNg2 } from 'ag-grid-angular';
-import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
+import { AgGridAngular } from 'ag-grid-angular';
+import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid-community';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { Groep } from './groep.model';
@@ -12,11 +12,11 @@ import * as moment from 'moment';
 @Component({
   selector: 'vollo-groep',
   templateUrl: './groep.component.html',
-  styleUrls: ['./groep.component.scss']
+  styleUrls: ['./groep.component.scss'],
 })
 export class GroepComponent implements OnInit {
   @ViewChild('agGrid')
-  agGrid: AgGridNg2;
+  agGrid: AgGridAngular;
 
   gridOptions = <GridOptions>{
     enableColResize: true,
@@ -24,7 +24,7 @@ export class GroepComponent implements OnInit {
     enableFilter: true,
     onRowClicked: (event: RowClickedEvent) => {
       this.leerlingStoreService.selecteren(event.data.leerling.id);
-    }
+    },
   };
   leerlingColDefs = <ColDef[]>[
     { headerName: 'ID', field: 'leerling.id', hide: true },
@@ -36,14 +36,14 @@ export class GroepComponent implements OnInit {
       field: 'leerling.geslacht',
       width: 100,
       valueFormatter: () => '',
-      cellClass: params =>
+      cellClass: (params) =>
         'fa ' +
         (params.value === 'MAN'
           ? 'fa-mars'
           : params.value === 'VROUW'
-            ? 'fa-venus'
-            : 'fa-genderless')
-    }
+          ? 'fa-venus'
+          : 'fa-genderless'),
+    },
   ];
   columnDefs = <ColDef[]>[];
   rowData: any;
@@ -57,21 +57,23 @@ export class GroepComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .pipe(switchMap((params: ParamMap) => of(params.get('groepId'))))
-      .subscribe(groepId => this.groepStoreService.ophalen(parseInt(groepId)));
+      .subscribe((groepId) => this.groepStoreService.ophalen(parseInt(groepId)));
 
     this.rowData = this.groepStoreService.groep$.pipe(
       tap((groep: Groep) => {
         this.columnDefs = groep
           ? [
               ...this.leerlingColDefs,
-              ...groep.toetsen.sort((a, b) => moment(b.datum).diff(a.datum)).map(toetsafname => {
-                return <ColDef>{
-                  headerName: toetsafname.toets.omschrijving,
-                  headerTooltip: `${toetsafname.toets.soort} ${toetsafname.datum}`,
-                  field: 'scores.' + toetsafname.id,
-                  width: 100
-                };
-              })
+              ...groep.toetsen
+                .sort((a, b) => moment(b.datum).diff(a.datum))
+                .map((toetsafname) => {
+                  return <ColDef>{
+                    headerName: toetsafname.toets.omschrijving,
+                    headerTooltip: `${toetsafname.toets.soort} ${toetsafname.datum}`,
+                    field: 'scores.' + toetsafname.id,
+                    width: 100,
+                  };
+                }),
             ]
           : [];
       }),
