@@ -15,7 +15,7 @@ import * as moment from 'moment';
   styleUrls: ['./groep.component.scss']
 })
 export class GroepComponent implements OnInit {
-  @ViewChild('agGrid', { static: false })
+  @ViewChild('agGrid')
   agGrid: AgGridNg2;
 
   gridOptions = <GridOptions>{

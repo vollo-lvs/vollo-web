@@ -10,7 +10,7 @@ import { MijnGroepenStoreService } from '../vollo-kern-store';
   styleUrls: ['./mijn-groepen.component.scss']
 })
 export class MijnGroepenComponent implements OnInit {
-  @ViewChild('agGrid', { static: false })
+  @ViewChild('agGrid')
   agGrid: AgGridNg2;
 
   gridOptions = <GridOptions>{
