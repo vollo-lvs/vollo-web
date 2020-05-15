@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticatieStoreModule } from './authenticatie-store';
 import { UiStoreModule } from './ui-store';
@@ -9,6 +9,12 @@ import { GroepStoreModule } from './groep-store';
 import { LeerlingStoreModule } from './leerling-store';
 import { ScoreStoreModule } from './score-store';
 import { BeheerScholenStoreModule } from './beheer-scholen-store';
+import { environment } from '../../../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+export const storeDevTools: ModuleWithProviders[] = !environment.production
+  ? [StoreDevtoolsModule.instrument()]
+  : [];
 
 @NgModule({
   declarations: [],
@@ -21,8 +27,12 @@ import { BeheerScholenStoreModule } from './beheer-scholen-store';
     LeerlingStoreModule,
     ScoreStoreModule,
     UiStoreModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([])
-  ]
+    StoreModule.forRoot(
+      {},
+      { runtimeChecks: { strictActionImmutability: false, strictStateImmutability: false } }
+    ),
+    EffectsModule.forRoot([]),
+    storeDevTools,
+  ],
 })
 export class VolloKernStoreModule {}

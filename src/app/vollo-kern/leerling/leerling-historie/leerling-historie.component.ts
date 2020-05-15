@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Leerling } from '../../groep/leerling.model';
 import { LeerlingStoreService } from '../../vollo-kern-store/leerling-store';
 import { GridOptions, ColDef } from 'ag-grid-community';
+import { AgGridService } from '../../common/ag-grid.service';
 
 @Component({
   selector: 'vollo-leerling-historie',
@@ -19,16 +20,15 @@ export class LeerlingHistorieComponent {
     this.leerlingStoreService.ophalenHistorie(value.id);
   }
 
-  gridOptions = <GridOptions>{
-    enableColResize: true,
-    enableSorting: true,
-    enableFilter: true,
-  };
+  gridOptions = this.agGridService.defaultOptions();
   columnDefs = <ColDef[]>[
     { headerName: 'Tijdslijn', field: 'omschrijving', width: 150 },
     { headerName: 'Begin', field: 'datumBegin', width: 130, sort: 'desc' },
     { headerName: 'Einde', field: 'datumEinde', width: 130 },
   ];
 
-  constructor(private leerlingStoreService: LeerlingStoreService) {}
+  constructor(
+    private leerlingStoreService: LeerlingStoreService,
+    private agGridService: AgGridService
+  ) {}
 }

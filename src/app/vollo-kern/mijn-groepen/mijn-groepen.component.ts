@@ -3,6 +3,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridOptions, RowClickedEvent } from 'ag-grid-community';
 import { Router } from '@angular/router';
 import { MijnGroepenStoreService } from '../vollo-kern-store';
+import { AgGridService } from '../common/ag-grid.service';
 
 @Component({
   selector: 'vollo-mijn-groepen',
@@ -13,14 +14,11 @@ export class MijnGroepenComponent implements OnInit {
   @ViewChild('agGrid')
   agGrid: AgGridAngular;
 
-  gridOptions = <GridOptions>{
-    enableColResize: true,
-    enableSorting: true,
-    enableFilter: true,
+  gridOptions = this.agGridService.defaultOptions({
     onRowClicked: (event: RowClickedEvent) => {
       this.router.navigate(['mijn-groepen', 'groep', event.data.id]);
     },
-  };
+  });
   columnDefs = <ColDef[]>[
     { headerName: 'ID', field: 'id', hide: true },
     { headerName: 'School', field: 'school.naam', width: 300 },
@@ -28,7 +26,11 @@ export class MijnGroepenComponent implements OnInit {
   ];
   rowData: any;
 
-  constructor(private mijnGroepenStoreService: MijnGroepenStoreService, private router: Router) {}
+  constructor(
+    private mijnGroepenStoreService: MijnGroepenStoreService,
+    private router: Router,
+    private agGridService: AgGridService
+  ) {}
 
   ngOnInit() {
     this.rowData = this.mijnGroepenStoreService.groepen$;

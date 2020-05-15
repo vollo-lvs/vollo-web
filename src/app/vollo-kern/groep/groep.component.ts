@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { GroepStoreService } from '../vollo-kern-store/groep-store';
 import { LeerlingStoreService } from '../vollo-kern-store/leerling-store';
 import * as moment from 'moment';
+import { AgGridService } from '../common/ag-grid.service';
 
 @Component({
   selector: 'vollo-groep',
@@ -18,14 +19,11 @@ export class GroepComponent implements OnInit {
   @ViewChild('agGrid')
   agGrid: AgGridAngular;
 
-  gridOptions = <GridOptions>{
-    enableColResize: true,
-    enableSorting: true,
-    enableFilter: true,
+  gridOptions = this.agGridService.defaultOptions({
     onRowClicked: (event: RowClickedEvent) => {
       this.leerlingStoreService.selecteren(event.data.leerling.id);
     },
-  };
+  });
   leerlingColDefs = <ColDef[]>[
     { headerName: 'ID', field: 'leerling.id', hide: true },
     { headerName: 'Roepnaam', field: 'leerling.roepnaam', width: 200, pinned: true },
@@ -51,7 +49,8 @@ export class GroepComponent implements OnInit {
   constructor(
     private groepStoreService: GroepStoreService,
     private leerlingStoreService: LeerlingStoreService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private agGridService: AgGridService
   ) {}
 
   ngOnInit() {
@@ -64,7 +63,7 @@ export class GroepComponent implements OnInit {
         this.columnDefs = groep
           ? [
               ...this.leerlingColDefs,
-              ...groep.toetsen
+              ...[...groep.toetsen]
                 .sort((a, b) => moment(b.datum).diff(a.datum))
                 .map((toetsafname) => {
                   return <ColDef>{

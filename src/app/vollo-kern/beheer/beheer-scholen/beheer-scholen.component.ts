@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid-community';
 import { BeheerScholenStoreService } from '../../vollo-kern-store/beheer-scholen-store';
+import { AgGridService } from '../../common/ag-grid.service';
 
 @Component({
   selector: 'vollo-beheer-scholen',
@@ -8,18 +9,17 @@ import { BeheerScholenStoreService } from '../../vollo-kern-store/beheer-scholen
   styleUrls: ['./beheer-scholen.component.scss'],
 })
 export class BeheerScholenComponent implements OnInit {
-  gridOptions = <GridOptions>{
-    enableColResize: true,
-    enableSorting: true,
-    enableFilter: true,
-  };
+  gridOptions = this.agGridService.defaultOptions();
   columnDefs = <ColDef[]>[
     { headerName: 'ID', field: 'id', hide: true },
     { headerName: 'Naam', field: 'naam', width: 300 },
   ];
   rowData: any;
 
-  constructor(private beheerScholenStoreService: BeheerScholenStoreService) {}
+  constructor(
+    private beheerScholenStoreService: BeheerScholenStoreService,
+    private agGridService: AgGridService
+  ) {}
 
   ngOnInit() {
     this.rowData = this.beheerScholenStoreService.scholen$;
