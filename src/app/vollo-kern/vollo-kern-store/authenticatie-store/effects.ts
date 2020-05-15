@@ -7,7 +7,7 @@ import { inloggen } from '../../common/api-clients/inloggen.client';
 import { ingelogdeGebruiker, uitloggen } from '../../common/api-clients/gebruiker.client';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from '@ngrx/store';
 
 @Injectable()

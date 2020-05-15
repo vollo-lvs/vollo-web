@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { filter, map, tap } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 import { ErrorAction } from '../../common/error-action.model';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as uiActions from './actions';
 import * as authActions from '../authenticatie-store/actions';
 

@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { InloggenComponent } from './vollo-kern/inloggen/inloggen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VolloMaterialModule } from './vollo-material.module';
-import { MatIconModule, MatIconRegistry } from '@angular/material';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { MijnGroepenComponent } from './vollo-kern/mijn-groepen/mijn-groepen.component';

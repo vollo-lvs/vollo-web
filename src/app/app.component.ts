@@ -6,7 +6,7 @@ import {
 } from './vollo-kern/vollo-kern-store';
 import { delay, map } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'vollo-root',
