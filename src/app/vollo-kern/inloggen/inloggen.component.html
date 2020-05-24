@@ -27,10 +27,32 @@
       </button>
     </form>
   </div>
-  <div *ngIf="(authenticatie$ | async).ingelogd">
+  <div *ngIf="(authenticatie$ | async).ingelogd" class="nav-panel">
     Welkom terug, {{(authenticatie$ | async).gebruikersnaam}}
     <br/>
     <a routerLink="/mijn-groepen"
-       routerLinkActive="active">Mijn groepen</a>
+       routerLinkActive="active">
+      <span class="fa-stack fa-4x">
+        <i class="fas fa-square fa-stack-2x"></i>
+        <i class="fas fa-users fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="subtitle">Mijn groepen</span>
+    </a>
+    <a routerLink="/mijn-groepen/scores"
+       routerLinkActive="active">
+      <span class="fa-stack fa-4x">
+        <i class="fas fa-square fa-stack-2x"></i>
+        <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="subtitle">Scores</span>
+    </a>
+    <a routerLink="/beheer/scholen"
+       routerLinkActive="active">
+      <span class="fa-stack fa-4x">
+        <i class="fas fa-square fa-stack-2x"></i>
+        <i class="fas fa-school fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="subtitle">Beheer scholen</span>
+    </a>
   </div>
 </div>

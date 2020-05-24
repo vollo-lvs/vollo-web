@@ -11,3 +11,23 @@ form {
 .fa {
   height: auto;
 }
+
+.nav-panel {
+  a {
+    text-decoration: none;
+
+    span.fa-stack {
+      transition: all .1s ease-out;
+      opacity: 0.6;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1.0;
+      }
+    }
+
+    .subtitle {
+      display: block;
+    }
+  }
+}
